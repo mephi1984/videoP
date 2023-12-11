@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoplayer2x.MediaPlayerController">
+   <center>
+      <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" BorderPane.alignment="BOTTOM_CENTER" />
+   </center>
+   <bottom>
+      <VBox prefHeight="120.0" prefWidth="850.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" opacity="0.6" prefHeight="43.0" prefWidth="850.0" style="-fx-background-color: #86A3C3;">
+               <children>
+                  <Slider fx:id="slider" onMousePressed="#sliderPressed" style="-fx-background-color: #86A3C3;" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="15.0" right="15.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" focusTraversable="true" opacity="0.6" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #86A3C3;">
+               <children>
+<!--                  <TextField fx:id="linkInput" promptText="Enter the video URL" />-->
+<!--                  <Button mnemonicParsing="false" fx:id="btnFind" text="Find" onAction="#findMedia" />-->
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onMouseClicked="#btnPlay">
+                     <graphic>
+                        <ImageView fx:id="btnPlayIcon" fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../media/pause.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+
+                  <Button mnemonicParsing="false" onMouseClicked="#btnStop">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../media/521260.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="btnRewind" mnemonicParsing="false" onAction="#rewindMedia">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../media/back10secpng.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="btnForward" mnemonicParsing="false" onAction="#forwardMedia">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../media/direct10sec.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label fx:id="lblDuration" text="Прод.: 00:00:00 / 00:00:00" />
+                  <Slider onMouseDragOver="#findMedia" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+   <top>
+      <Button alignment="TOP_LEFT" cache="true" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#selectMedia" opacity="0.6" prefHeight="10.0" prefWidth="1500.0" style="-fx-background-color: #86A3C3;" text="выбрать файл " BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
