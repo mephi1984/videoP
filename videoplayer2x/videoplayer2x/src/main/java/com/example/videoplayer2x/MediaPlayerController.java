@@ -1,5 +1,7 @@
 package com.example.videoplayer2x;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -46,6 +48,11 @@ public class MediaPlayerController {
     @FXML
     private Button btnFind;
 
+
+    @FXML
+    private Slider sliderVolume;
+
+
     private Media media;
     private MediaPlayer mediaPlayer;
 
@@ -56,13 +63,13 @@ public class MediaPlayerController {
         if(!isPlayed){
             mediaPlayer.play();
             btnPlayIcon.setVisible(true);
-            Image img = new Image("file:src/main/resources/media/pause.png");
+            Image img = new Image(getClass().getResourceAsStream("/media/play.png"));
             btnPlayIcon.setImage(img);
             isPlayed = true;
         }else {
             mediaPlayer.pause();
             btnPlayIcon.setVisible(true);
-            Image img = new Image("file:src/main/resources/media/play.png");
+            Image img = new Image(getClass().getResourceAsStream("/media/pause.png"));
             btnPlayIcon.setImage(img);
             isPlayed = false;
         }
@@ -121,6 +128,13 @@ public class MediaPlayerController {
             mediaView.fitWidthProperty().bind(scene.widthProperty());
             mediaView.fitHeightProperty().bind(scene.heightProperty());
 
+            sliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
+                public void changed(ObservableValue<? extends Number> ov,
+                                    Number old_val, Number new_val) {
+                    mediaPlayer.setVolume(new_val.doubleValue() / 100);
+                }
+            });
+
             //mediaPlayer.setAutoPlay(true);
 
         }
@@ -129,12 +143,12 @@ public class MediaPlayerController {
 
     @FXML
     private void rewindMedia(ActionEvent event) {
-        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(10))); // Rewind 5 seconds
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(10)));
     }
 
     @FXML
     private void forwardMedia(ActionEvent event) {
-        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10))); // Forward 5 seconds
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));
 
     }
 

@@ -28,13 +28,11 @@
             </HBox>
             <HBox alignment="CENTER" focusTraversable="true" opacity="0.6" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #86A3C3;">
                <children>
-<!--                  <TextField fx:id="linkInput" promptText="Enter the video URL" />-->
-<!--                  <Button mnemonicParsing="false" fx:id="btnFind" text="Find" onAction="#findMedia" />-->
                   <Button fx:id="btnPlay" mnemonicParsing="false" onMouseClicked="#btnPlay">
                      <graphic>
                         <ImageView fx:id="btnPlayIcon" fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../media/pause.png" />
+                              <Image url="@../../../media/play.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -65,7 +63,10 @@
                         </ImageView>
                      </graphic></Button>
                   <Label fx:id="lblDuration" text="Прод.: 00:00:00 / 00:00:00" />
-                  <Slider onMouseDragOver="#findMedia" />
+                  <Slider fx:id="sliderVolume" onMouseDragOver="#findMedia" min="0.0" max="100.0" value="50.0"
+                          showTickLabels="true" showTickMarks="true"
+                          majorTickUnit="10.0" minorTickCount="5"
+                          snapToTicks="true" />
                </children>
             </HBox>
          </children>
